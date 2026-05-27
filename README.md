@@ -13,8 +13,11 @@ LegoSwarm is a modular distributed robotics research platform for decentralized 
 
 ## Core Prinicples
 **Decentralized execution** — Robots act independently.
+
 **Minimal communication** — Event-driven, sparse messages.
+
 **Stigmergic coordination** — Shared digital twin and memory.
+
 **Fault tolerance** — Loss of individual robots does not terminate construction.
 
 

@@ -1,0 +1,2 @@
+# Purpose
+Worker robots prioritize simplicity, repeatability, modularity, and maintainability. Mechanical sophistication, reach, strength, and torque are intentionally minimized so research effort concentrates on distributed-construction software and iteration is fast. The detailed gripper/arm mechanism is developed under a separate prototyping project and is treated here as a defined, bounded subsystem.

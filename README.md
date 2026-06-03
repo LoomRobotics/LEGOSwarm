@@ -1,6 +1,5 @@
 # LEGOSwarm
-LEGOSwarm is an autonomous robotic assembly system powered by [WeaveOS](Weave.md) that employs a [Foreman](Foreman.md) and [Workers](Worker.md) to assemble complete LEGO kits. Developed by Loom Robotics.
-Return here periodically for updates as we add to the repo.
+LEGOSwarm is an autonomous robotic assembly system called [WeaveOS](Weave.md) that employs a [Foreman](Foreman.md) and [Workers](Worker.md) to assemble complete LEGO kits purely from visual input of the LEGO isntruction booklet. Developed by Loom Robotics.
 
 
 # Youtube Channel
@@ -22,7 +21,7 @@ LegoSwarm is a modular distributed robotics research platform for decentralized 
 
 
 ### How
-A team of autonomous mobile robots collaboratively assembles LEGO structures within a controlled arena. A supervisory planning layer, the Foreman, parses a digital construction model into a dependency graph and releases buildable steps to the swarm. Execution, navigation, placement, and verification are fully decentralized and performed by the worker robots.
+A team of autonomous mobile robots collaboratively assembles LEGO structures within a controlled arena. A supervisory planning layer, the [Foreman](foreman.md), parses a digital construction model into an [Assembly Graph](Assemblygraph.md) and releases buildable steps to the swarm. Execution, navigation, placement, and verification are fully decentralized and performed by the worker robots.
 
 
 ### Why

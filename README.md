@@ -13,7 +13,7 @@ A modular distributed robotics research platform for decentralized physical asse
 ## Core Prinicples
 **Decentralized execution** — Robots act independently.
 
-**Minimal communication** — Event-driven, sparse messages.
+**Minimal communication** — Low bandwidth, event-driven, sparse messages.
 
 **Stigmergic coordination** — Shared digital twin and memory.
 

@@ -21,7 +21,7 @@ A modular distributed robotics research platform for decentralized physical asse
 
 
 ### How
-A team of autonomous mobile robots collaboratively assembles LEGO structures within a controlled arena. A supervisory planning layer, the [Foreman](foreman.md), parses a digital construction model into an [Assembly Graph](Assemblygraph.md), comprised of physical jobs that need to be completed onsite. The graph releases job nodes to the swarm intermittently and with minimal bandwidth usage. Execution, navigation, placement, and verification are fully decentralized and performed onboard by the [Worker](worker.md).
+A team of autonomous mobile robots collaboratively assembles LEGO structures within a controlled arena. A supervisory planning layer, the [Foreman](foreman.md), parses a digital construction model into an [Assembly Graph](Assemblygraph.md), comprised of physical jobs that need to be completed onsite. The graph releases job nodes to the swarm intermittently and with minimal bandwidth usage. Execution, navigation, placement, and verification are fully decentralized and performed onboard by the [Workers](Worker.md).
 
 
 ### Why

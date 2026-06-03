@@ -1,5 +1,5 @@
 # LEGOSwarm
-LEGOSwarm is an autonomous robotic assembly system called [WeaveOS](Weave.md) that employs a [Foreman](Foreman.md) and [Workers](Worker.md) to assemble complete LEGO kits purely from visual input of the LEGO isntruction booklet. Developed by Loom Robotics.
+LEGOSwarm is a research platform investigating autonomous robotic assembly, powered by a system called [WeaveOS](Weave.md) that employs a [Foreman](Foreman.md) and [Workers](Worker.md) to assemble complete LEGO kits purely from visual input of the LEGO isntruction booklet. Developed by Loom Robotics.
 
 
 # Youtube Channel
@@ -7,7 +7,7 @@ https://www.youtube.com/channel/UCpjbNt2DCMKCNqQ9IGROmjg
 
 
 ## Excecutive Summary
-LegoSwarm is a modular distributed robotics research platform for decentralized physical assembly, swarm coordination, and fault-tolerant construction workflows.
+A modular distributed robotics research platform for decentralized physical assembly, swarm coordination, and fault-tolerant construction workflows.
 
 
 ## Core Prinicples
@@ -21,7 +21,7 @@ LegoSwarm is a modular distributed robotics research platform for decentralized 
 
 
 ### How
-A team of autonomous mobile robots collaboratively assembles LEGO structures within a controlled arena. A supervisory planning layer, the [Foreman](foreman.md), parses a digital construction model into an [Assembly Graph](Assemblygraph.md) and releases buildable steps to the swarm. Execution, navigation, placement, and verification are fully decentralized and performed by the worker robots.
+A team of autonomous mobile robots collaboratively assembles LEGO structures within a controlled arena. A supervisory planning layer, the [Foreman](foreman.md), parses a digital construction model into an [Assembly Graph](Assemblygraph.md), comprised of physical jobs that need to be completed onsite. The graph releases job nodes to the swarm intermettently and with minimal bandwidth usage. Execution, navigation, placement, and verification are fully decentralized and performed onboard by the [Worker](worker.md).
 
 
 ### Why

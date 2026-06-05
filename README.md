@@ -1,5 +1,5 @@
 # LEGOSwarm
-LEGOSwarm is a research platform investigating autonomous robotic assembly, powered by a system called [WEAVE](Weave.md) that employs a [Foreman](Foreman.md) and [Workers](Worker.md) to assemble complete LEGO kits purely from visual input of the LEGO isntruction booklet. Developed by Loom Robotics.
+LEGOSwarm is a research platform developed by [Loom Robotics](https://loom-robotics.com/) investigating autonomous robotic assembly, powered by a system called [WEAVE](Weave.md) that employs a [Foreman](Foreman.md) and [Workers](Worker.md) to assemble complete LEGO kits purely from visual input of the LEGO isntruction booklet. Developed by Loom Robotics.
 
 
 # Youtube Channel

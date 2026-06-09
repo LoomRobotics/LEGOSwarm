@@ -11,7 +11,9 @@ Traditional multi-agent construction swarms rely heavily on continuous, high-ban
 
 **1.4**	To resolve these limitations, we present LEGOSwarm, a novel system architecture that transposes the enterprise software design principles of Event Sourcing (ES) and Command Query Responsibility Segregation (CQRS) to physical, spatial 3D robotic assembly. Under LEGOSwarm, individual robots do not directly mutate or synchronize global project states. Instead, the absolute source of truth is maintained as an immutable, append-only ledger of discrete transition events (the write model).
 Each autonomous robot in the swarm maintains a local copy of this event stream, which it processes asynchronously to reconstruct and update a local projection of the global Assembly Graph (the read model). In this framework, the physical progress of the construction site is modeled as a continuous feedback loop designed to systematically minimize the spatial and structural error vector e(t) over time:
-e(t)=sdesired​(t)−scurrent​(t)
+
+**e(t)=sdesired​(t)−scurrent​(t)**
+
 where the swarm's collective actuator actions serve as a distributed regulator trying to drive e(t)→0.
 
 This architecture introduces four primary contributions to the field of swarm robotics:

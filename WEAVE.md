@@ -18,7 +18,7 @@ where the swarm's collective actuator actions serve as a distributed regulator t
 
 This architecture introduces four primary contributions to the field of swarm robotics:
 
-**1.4.1**	Dual-Layer CQRS Partitioning: We decouple the physical, spatial truth of the assembly (represented by the Mission Graph) from the transactional history of its construction (stored in the Event Log). This division allows workers to coordinate solely by exchanging lightweight delta updates rather than monolithic map structures.
+**1.4.1**	Dual-Layer CQRS Partitioning: We decouple the physical, spatial truth of the assembly (represented by the Assembly Graph) from the transactional history of its construction (stored in the Event Log). This division allows workers to coordinate solely by exchanging lightweight delta updates rather than monolithic map structures.
 
 **1.4.2**	Lock-Free, Lease-Based Task Allocation: We replace high-latency negotiation and auction protocols with local, replicated reservation tables governed by self-expiring leases. This allows robots to claim assembly nodes with zero network negotiation, while guaranteeing graceful recovery if an agent suffers hardware failure or falls offline. 
 

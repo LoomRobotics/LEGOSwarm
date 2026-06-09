@@ -1,2 +1,47 @@
-WEAVE: Workload Execution and Autonomous Verification Engine.
-A fault-tolerant robotic swarm orchestration system that can continue function through sparse data transmissions or low-bandwidth transmissions.
+## **WEAVE**: Workload Execution and Autonomous Verification Engine.
+A fault-tolerant robotic swarm orchestration system that enables function through sparse and low-bandwidth data transmissions.
+
+## Abstract
+Traditional multi-agent construction swarms rely heavily on continuous, high-bandwidth global state synchronization or centralized task arbiters, which suffer from communication bottlenecks, network contention, and single-point-of-failure vulnerabilities in degraded environments. We introduce **WEAVE**, a fault-tolerant system architecture that enables sparse, low-bandwidth transmissions to robot swarms. The LEGOSwarm research platform employs this decentralized, event-sourced coordination architecture that decouples structural intent from robotic execution by splitting the system state into a declarative, directed Assembly Graph (the read model) and an immutable, append-only Event Log (the write model). Rather than exchanging heavy 3D spatial representations or monolithic graphs, individual agents coordinate asynchronously by emitting and replaying lightweight, transactional graph-mutation events. By formulating physical assembly as a continuous, local state-reconciliation loop, we establish a lock-free, lease-based task reservation table that ensures eventual consistency across partitioned networks. Furthermore, we incorporate a distributed "Build → Verify → Continue" pipeline using directed constraints to enforce multi-agent verification boundaries, preventing structural error propagation. Simulation benchmarks demonstrate that the proposed architecture significantly minimizes communication bandwidth, scales linearly with the swarm population, and maintains structural integrity under severe wireless latency and agent attrition.
+
+## 1. Introduction
+**1.1**	The orchestration of autonomous multi-agent systems for physical construction in unstructured, remote, or extreme environments—such as space pre-assembly, planetary habitat setup, and disaster-relief operations —presents a fundamental tension between global task coherence and localized resource constraints. In such environments, traditional coordination paradigms are bottlenecked by the physical realities of the deployment site, including high-latency communication, frequent network partitions, and unpredictable agent attrition.
+**1.2**	Traditional state-of-the-art multi-robot task allocation (MRTA) and collaborative assembly frameworks rely on continuous, high-overhead state synchronization. Robots must exchange large 3D spatial representations, dense occupancy grids, or complex pose-graphs to maintain a unified worldview. As the swarm population N and structural complexity M scale, the network bandwidth required to broadcast these global structures grows quadratically, rapidly saturating ad-hoc wireless channels. Furthermore, parallel task execution under these paradigms introduces severe synchronization contention; when multiple robots attempt to manipulate the same object or occupy the same workspace coordinate, resolving the conflict requires centralized arbiters or synchronous, multi-round auction protocols that stall execution.
+**Fig 1.3**
+┌────────────────────────────────────────────────────────┐
+│                      FOREMAN                           │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+                           │ Transmits Graph Patches
+                           ▼
+┌────────────────────────────────────────────────────────┐
+│                    ASSEMBLY GRAPH                       │
+│    - Directed Acyclic Graph (DAG) of Assembly Tasks    │
+│    - Defines "Desired State" vs "Current State"        │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+                           │ Event Replay (Fold)
+                           ▼
+┌────────────────────────────────────────────────────────┐
+│                      EVENT LOG                         │
+│    - Immutable, Append-Only Ledger of Mutations        │
+│    - Emitted Beacons act as Stigmergic Pheromones      │
+└──────────────────────────┬─────────────────────────────┘
+                           │
+                           │ Distributed Gossip
+                           ▼
+┌────────────────────────────────────────────────────────┐
+│                    WORKER SWARM                        │
+│    - Local Reconciliation: Rebuilds Mission Graph      │
+│    - Lock-Free Task Claims & Peer Verification         │
+└────────────────────────────────────────────────────────┘
+
+**1.4**	To resolve these limitations, we present LEGOSwarm, a novel system architecture that transposes the enterprise software design principles of Event Sourcing (ES) and Command Query Responsibility Segregation (CQRS) to physical, spatial 3D robotic assembly. Under LEGOSwarm, individual robots do not directly mutate or synchronize global project states. Instead, the absolute source of truth is maintained as an immutable, append-only ledger of discrete transition events (the write model).
+Each autonomous robot in the swarm maintains a local copy of this event stream, which it processes asynchronously to reconstruct and update a local projection of the global Assembly Graph (the read model). In this framework, the physical progress of the construction site is modeled as a continuous feedback loop designed to systematically minimize the spatial and structural error vector e(t) over time:
+e(t)=sdesired​(t)−scurrent​(t)
+where the swarm's collective actuator actions serve as a distributed regulator trying to drive e(t)→0.
+This architecture introduces four primary contributions to the field of swarm robotics:
+**1.4.1**	Dual-Layer CQRS Partitioning: We decouple the physical, spatial truth of the assembly (represented by the Mission Graph) from the transactional history of its construction (stored in the Event Log). This division allows workers to coordinate solely by exchanging lightweight delta updates rather than monolithic map structures.
+**1.4.2**	Lock-Free, Lease-Based Task Allocation: We replace high-latency negotiation and auction protocols with local, replicated reservation tables governed by self-expiring leases. This allows robots to claim assembly nodes with zero network negotiation, while guaranteeing graceful recovery if an agent suffers hardware failure or falls offline.  
+**1.4.3**	Directed Peer Verification Loops: We establish a strict "Build → Verify → Continue" constraint directly in the graph topology. By programmatically enforcing that a second, independent robot must inspect and verify a placement before dependent task nodes are unlocked, we mitigate structural drift and prevent cascading alignment errors.  
+**1.4.4**	Structured Machine Intent Objects: We elevate node "Notes" from unstructured, human-readable strings to first-class, machine-readable intent objects. This enables robots to dynamically discover, interpret, and implement alternative plans—such as substituting materials on the fly—without human intervention or centralized rescheduling.  
